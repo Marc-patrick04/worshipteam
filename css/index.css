@@ -1,0 +1,518 @@
+body {
+    background: linear-gradient(135deg, var(--primary-black) 0%, #222 50%, var(--primary-black) 100%);
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.welcome-section {
+    position: relative;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.welcome-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+}
+
+.welcome-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: white;
+    max-width: 800px;
+    padding: 2rem;
+}
+
+.welcome-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.welcome-content h2 {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    font-weight: normal;
+    opacity: 0.9;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+.welcome-content .scripture {
+    font-size: 1.2rem;
+    font-style: italic;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+/* Slideshow Navigation Dots */
+.slideshow-dots {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    display: flex;
+    gap: 10px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: black;
+    border: 2px solid black;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot:hover {
+    background-color: black;
+    transform: scale(1.2);
+}
+
+.dot.active {
+    background-color: white;
+    border-color: white;
+}
+
+/* Manual control - hide automatic animations when dots are present */
+.welcome-section.has-dots .bg-slideshow {
+    opacity: 0;
+}
+
+.welcome-section.has-dots .bg-slideshow.active {
+    opacity: 1;
+}
+
+.welcome-header {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 1rem 2rem;
+    border-bottom: 3px solid var(--primary-white);
+    position: relative;
+}
+
+.welcome-header .header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.welcome-header .logo-container {
+    flex-shrink: 0;
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.welcome-header .title-container {
+    flex: 1;
+    text-align: center;
+    margin: 0 120px;
+    /* Account for logo width + padding */
+}
+
+.welcome-header .logo {
+    height: 120px;
+    width: auto;
+    transition: all 0.4s ease;
+    border-radius: 10px;
+    padding: 0.5rem;
+    transform: scale(2.2);
+}
+
+.welcome-header .title-container h1 {
+    margin-bottom: 0.25rem;
+    font-size: 2rem;
+    background: linear-gradient(135deg, var(--primary-white) 0%, var(--accent-yellow) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.welcome-header .title-container h2 {
+    font-size: 1rem;
+    font-weight: normal;
+    color: var(--primary-white);
+    opacity: 0.9;
+}
+
+.welcome-nav {
+    position: absolute;
+    top: 50%;
+    right: 2rem;
+    transform: translateY(-50%);
+}
+
+.welcome-nav a {
+    color: var(--primary-white);
+    text-decoration: none;
+    padding: 0.4rem 0.6rem;
+    border: 2px solid white;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    background: transparent;
+    font-size: 0.75rem;
+    font-weight: 600;
+    max-width: 120px;
+    white-space: nowrap;
+}
+
+.welcome-nav a:hover {
+    background-color: var(--accent-yellow);
+    color: var(--primary-black);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4);
+}
+
+main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.hero-section {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 3rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    border: 2px solid var(--primary-black);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.hero-content h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--primary-black);
+    text-align: center;
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.hero-content strong {
+    display: block;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--accent-yellow);
+}
+
+.groups-section {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 2px solid var(--primary-black);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+.groups-section h3 {
+    text-align: center;
+    color: var(--primary-black);
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+    border-bottom: 3px solid black;
+    padding-bottom: 1rem;
+}
+
+.current-groups {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.group {
+    background: var(--primary-white);
+    border: 2px solid var(--primary-black);
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.group:hover {
+    border-color: black;
+    box-shadow: 0 4px 16px black;
+}
+
+.group h4 {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: black;
+    font-size: 1.3rem;
+    border-bottom: 2px solid black;
+    padding-bottom: 0.5rem;
+}
+
+.voice-categories {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.voice-category h5 {
+    margin-bottom: 0.5rem;
+    color: var(--primary-black);
+    font-size: 1rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    padding-bottom: 0.25rem;
+}
+
+.voice-category .count {
+    color: black;
+    font-weight: bold;
+}
+
+.voice-category ul {
+    margin: 0;
+    padding-left: 1rem;
+}
+
+.voice-category li {
+    margin-bottom: 0.25rem;
+    color: var(--dark-gray);
+    font-size: 0.9rem;
+}
+
+.voice-category li small {
+    color: black;
+    font-weight: 500;
+}
+
+.no-groups-message {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+    border: 2px solid black;
+}
+
+.no-groups-message h3 {
+    color: var(--primary-black);
+    margin-bottom: 1rem;
+}
+
+.no-groups-message p {
+    color: var(--dark-gray);
+    margin-bottom: 1rem;
+}
+
+.login-section {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    border: 2px solid var(--accent-yellow);
+    box-shadow: 0 4px 16px rgba(255, 215, 0, 0.1);
+}
+
+.login-section .btn {
+    font-size: 1.1rem;
+    padding: 1rem 2rem;
+}
+
+@media (max-width: 1024px) {
+    .current-groups {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Mobile Header Improvements */
+    .welcome-header {
+        padding: 0.75rem 1rem;
+        position: relative;
+    }
+
+    .welcome-header .header-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        position: relative;
+    }
+
+    .welcome-header .logo-container {
+        position: static;
+        transform: none;
+        flex-shrink: 0;
+    }
+
+    .welcome-header .logo {
+        height: 80px;
+        width: auto;
+        transform: scale(1.5);
+        padding: 0.25rem;
+    }
+
+    .welcome-header .title-container {
+        flex: 1;
+        text-align: center;
+        margin: 0;
+        min-width: 0; /* Allow text to wrap */
+    }
+
+    .welcome-header .title-container h1 {
+        font-size: 1.4rem;
+        margin-bottom: 0.1rem;
+        white-space: normal;
+        line-height: 1.2;
+        word-wrap: break-word;
+    }
+
+    .welcome-header .title-container h2 {
+        font-size: 0.8rem;
+        display: none; /* Hide subtitle on mobile for space */
+    }
+
+    .welcome-nav {
+        position: static;
+        transform: none;
+        flex-shrink: 0;
+    }
+
+    .welcome-nav a {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.7rem;
+        font-weight: 500;
+        white-space: nowrap;
+        border: 1px solid white;
+        border-radius: 4px;
+        background: transparent;
+        min-width: auto;
+        max-width: 80px;
+        text-align: center;
+        opacity: 0.9;
+    }
+
+    /* Content adjustments */
+    .welcome-content {
+        padding: 1rem;
+    }
+
+    .welcome-content h1 {
+        font-size: 2rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .welcome-content h2 {
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .welcome-content .scripture {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    /* Main content */
+    main {
+        margin: 1rem auto;
+        padding: 0 0.75rem;
+    }
+
+    .groups-section {
+        padding: 1.5rem;
+    }
+
+    .groups-section h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .current-groups {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .group {
+        padding: 1rem;
+    }
+
+    .group h4 {
+        font-size: 1.1rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .voice-categories {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+
+    .voice-category h5 {
+        font-size: 0.9rem;
+    }
+
+    .voice-category li {
+        font-size: 0.85rem;
+        margin-bottom: 0.2rem;
+    }
+
+    .no-groups-message {
+        padding: 1.5rem;
+    }
+
+    /* Slideshow dots */
+    .slideshow-dots {
+        bottom: 20px;
+        gap: 8px;
+    }
+
+    .dot {
+        width: 10px;
+        height: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .welcome-header .logo {
+        height: 70px;
+        transform: scale(1.2);
+    }
+
+    .welcome-header .title-container h1 {
+        font-size: 1.2rem;
+    }
+
+    .welcome-nav a {
+        padding: 0.35rem 0.4rem;
+        font-size: 0.7rem;
+    }
+
+    .welcome-content h1 {
+        font-size: 1.8rem;
+    }
+
+    .welcome-content h2 {
+        font-size: 1rem;
+    }
+
+    .groups-section {
+        padding: 1rem;
+    }
+
+    .group {
+        padding: 0.75rem;
+    }
+}
