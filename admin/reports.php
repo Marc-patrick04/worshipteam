@@ -584,7 +584,7 @@ $message = '';
 
                     <?php
                     // Get all groups with their singer counts
-                    $stmt = $pdo->query("
+                    $stmt = $pdo->prepare("
                         SELECT g.id, g.name, g.service_date, g.service_order,
                                COUNT(ga.singer_id) as singer_count
                         FROM groups g
@@ -592,6 +592,7 @@ $message = '';
                         GROUP BY g.id, g.name, g.service_date, g.service_order
                         ORDER BY g.service_date DESC, g.service_order ASC
                     ");
+                    $stmt->execute();
                     $allGroups = $stmt->fetchAll();
 
                     // Group by date for display
@@ -660,13 +661,14 @@ $message = '';
 
                     <?php
                     // Get all created groups ordered by date
-                    $stmt = $pdo->query("
+                    $stmt = $pdo->prepare("
                         SELECT g.id, g.name, g.service_date, COUNT(ga.singer_id) as singer_count
                         FROM groups g
                         LEFT JOIN group_assignments ga ON g.id = ga.group_id
                         GROUP BY g.id, g.name, g.service_date
                         ORDER BY g.service_date DESC, g.service_order ASC
                     ");
+                    $stmt->execute();
                     $allGroups = $stmt->fetchAll();
 
                     // Group by date for easier processing

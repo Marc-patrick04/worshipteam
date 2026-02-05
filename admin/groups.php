@@ -178,7 +178,6 @@ function createGroups($groupCount, $groupNames, $serviceDate, $mixingMethod) {
     }
 
     // Create groups in database
-    $pdo->beginTransaction();
     try {
         // Unpublish existing groups
         $pdo->exec("UPDATE groups SET is_published = false WHERE is_published = true");
@@ -202,8 +201,6 @@ function createGroups($groupCount, $groupNames, $serviceDate, $mixingMethod) {
             }
         }
 
-        $pdo->commit();
-
         // Different message for manual assignment
         if ($mixingMethod === 'manual') {
             setMessage("✅ Empty groups created successfully! {$groupCount} groups are ready for manual singer assignment. Groups are saved as drafts - publish them when ready.");
@@ -215,7 +212,6 @@ function createGroups($groupCount, $groupNames, $serviceDate, $mixingMethod) {
         return true;
 
     } catch (PDOException $e) {
-        $pdo->rollBack();
         addError("Database error creating groups: " . $e->getMessage());
         return false;
     }
